@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { ContainerHeader } from "./styles";
 
 
@@ -10,8 +11,17 @@ export function Header() {
                 <ol>
                     <ul>Categorias</ul>
                     <ul>Ofertas do dia</ul>
-                    <ul>Histórico</ul>
-                    <ul>Moda</ul>
+                    <NavLink style={{textDecoration: 'none'}} to='/' title="Home">
+                        <ul>
+                            Produtos
+                        </ul>
+                    </NavLink>
+
+                    <NavLink style={{textDecoration: 'none'}} to='/register' title="Home">
+                        <ul>
+                            Cadastro
+                        </ul>
+                    </NavLink>
                 </ol>
             </nav>
         </ContainerHeader>

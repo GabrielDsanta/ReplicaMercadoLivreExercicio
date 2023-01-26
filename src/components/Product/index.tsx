@@ -6,6 +6,7 @@ export interface ProductProps {
     brand: string
     name: string
     category: string
+    id: string
 }
 
 export function Product({ imageSrc, value, brand, name, category }: ProductProps){

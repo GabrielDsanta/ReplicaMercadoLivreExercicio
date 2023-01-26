@@ -24,6 +24,11 @@ export const ContainerHeader = styled.header`
             gap: 1.5rem;
             align-items: center;
             justify-content: center;
+
+            ul{
+                color: black;
+            }
         }
     }
+
 `

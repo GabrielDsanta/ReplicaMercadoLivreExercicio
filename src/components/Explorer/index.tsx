@@ -7,16 +7,16 @@ export function Explorer() {
 
     const [products, setProducts] = useState<ProductProps[]>([])
     const [filter, setFilter] = useState('Crescente')
-    
+
     useEffect(() => {
-        axios.get('https://apigenerator.dronahq.com/api/_7dUHOON/produtos').then(response => {
+        axios.get('https://apigenerator.dronahq.com/api/MNdw05qQ/produtos').then(response => {
             let filteredProducts
             filter === 'Decrescente' && (
-                filteredProducts = response.data.sort((a: any, b: any) =>  b.value - a.value)
+                filteredProducts = response.data.sort((a: any, b: any) => b.value - a.value)
             )
 
             filter === 'Crescente' && (
-                filteredProducts = response.data.sort((a: any, b: any) =>  a.value - b.value)
+                filteredProducts = response.data.sort((a: any, b: any) => a.value - b.value)
             )
             setProducts(filteredProducts)
 
@@ -26,34 +26,54 @@ export function Explorer() {
     return (
         <ContainerSection>
             <select name="Valor" id="" onChange={(e: SyntheticEvent<HTMLSelectElement>) => setFilter(e.currentTarget.value)}>
-                <option about="Valor" value="Crescente">Valor Crescente</option>
-                <option about="Valor" value="Decrescente">Valor Decrescente</option>
+                <option about="Valor" value="Crescente">Valor Decrescente</option>
+                <option about="Valor" value="Decrescente">Valor Crescente</option>
             </select>
 
             <ContainerProducts>
                 {products.map((item, index) => {
-                    if(index < 4){
+                    if (index < 5) {
                         return <Product
-                        brand={item.brand}
-                        category={item.category}
-                        imageSrc={item.imageSrc}
-                        name={item.name}
-                        value={item.value}
-                    />
+                            brand={item.brand}
+                            category={item.category}
+                            imageSrc={item.imageSrc}
+                            name={item.name}
+                            id={item.id}
+                            key={item.id}
+                            value={item.value}
+                        />
                     }
                 })}
             </ContainerProducts>
 
             <ContainerProducts>
                 {products.map((item, index) => {
-                    if(index < 4){
+                    if (index > 5 && index <= 10) {
                         return <Product
-                        brand={item.brand}
-                        category={item.category}
-                        imageSrc={item.imageSrc}
-                        name={item.name}
-                        value={item.value}
-                    />
+                            brand={item.brand}
+                            category={item.category}
+                            imageSrc={item.imageSrc}
+                            name={item.name}
+                            key={item.id}
+                            id={item.id}
+                            value={item.value}
+                        />
+                    }
+                })}
+            </ContainerProducts>
+
+            <ContainerProducts>
+                {products.map((item, index) => {
+                    if (index > 10) {
+                        return <Product
+                            brand={item.brand}
+                            category={item.category}
+                            imageSrc={item.imageSrc}
+                            name={item.name}
+                            key={item.id}
+                            id={item.id}
+                            value={item.value}
+                        />
                     }
                 })}
             </ContainerProducts>
