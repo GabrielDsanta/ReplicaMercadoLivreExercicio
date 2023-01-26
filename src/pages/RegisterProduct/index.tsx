@@ -44,6 +44,13 @@ export function Register() {
     }
 
     function CreateNewCycle(data: ProductProps) {
+        if(Number(data.value) <= 0){
+            return
+        }
+
+        if(data.name.search(/[^a-zA-Z0-9]+/g) !== -1 ){
+            return
+        }
         const newProduct: ProductProps = {
             brand: data.brand,
             category: data.category,
